@@ -1,16 +1,16 @@
 const { createApp } = Vue //Desestructuring: Rescatamos el createApp de Vue
 
 const app = createApp({
-
   data() {
     return { //Propiedades reactivas de Vue. Cambia el valor en todos los lugares que se use sin necesidad que yo le indique donde cambiarlo
-      apiLocation: "../data/amazing.json",
+      apiUrl: '../data/amazing.json',
       events: [],
     }
   },
 
-  created(){ //con this le pido que me traiga el message de data
-     this.getData 
+  //Cuando recien se esta creando la app
+  created(){ //con this le pido que me traiga
+     this.getData()
   },
 
   mounted(){
@@ -19,10 +19,10 @@ const app = createApp({
 
   methods:{
     getData(){
-      fetch(this.apiLocation)
+      fetch(this.apiUrl)
         .then(response => response.json())
         .then(dataApi => {
-          this.events = dataApi
+            this.events = dataApi.events
         })
     }
   },
