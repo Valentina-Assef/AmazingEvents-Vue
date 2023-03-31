@@ -13,6 +13,8 @@
     <title>Details</title>
 </head>
 <body>
+  <!-- Vue -->
+  <div id="app">
     <header>
       <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
@@ -53,6 +55,29 @@
         </div>
       </div>
       <div id="cardDetails" class="details">
+        <div v-if="selectedEvent" class="card card-details">
+          <div class="row g-0">
+            <div class="col-md-6 img-details">
+              <img :src="selectedEvent.image" class="img-fluid img-card-details" alt={{selectedEvent.name}}>
+            </div>
+            <div class="col-md-6">
+              <div class="card-body card-body-details">
+                <h5 class="card-title text-center">{{selectedEvent.name}}</h5>
+                <div class="card-body-text">
+                  <p class="card-text">Date: {{selectedEvent.date}}</p>
+                  <p class="card-text">Description: {{selectedEvent.description}}</p>
+                  <p class="card-text">Category: {{selectedEvent.category}}</p>
+                  <p class="card-text">Place: {{selectedEvent.place}}</p>
+                  <p class="card-text">Capacity: {{selectedEvent.capacity}}</p>         
+                  <p class="card-text">
+                    {{ selectedEvent.assistance ? 'Assistance: ' + selectedEvent.assistance : 'Estimate: ' + selectedEvent.estimate }}
+                  </p>
+                  <p class="card-text">Price: ${{selectedEvent.price}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer>
@@ -69,7 +94,9 @@
         </div>
       </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script type="module" src="./script/details.js"></script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script type="module" src="../scripts/main.js"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@
   <!-- Empieza Vue! Dentro de este div trabajo todo lo que tenga Vue -->
   <div id="app"> 
     <header>
-     <nav class="navbar navbar-expand-md">
+      <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
             <img src="../assets/img/logo_amazing_events.png" alt="logo_amazing_events" width="130" height="30">
@@ -91,7 +91,7 @@
           </div>
           <div class="footer-card d-flex">
             <P>Precio ${{evento.price}}</P>
-            <a href="../htmls/details.html?id=${element._id}" class="btn btn-see-more">See more...</a>
+            <a v-if="evento._id" :href="'../pages/details.html?id=' + evento._id" class="btn btn-see-more">See more...</a>
           </div> 
         </div>
       </div>

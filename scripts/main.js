@@ -9,10 +9,14 @@ const app = createApp({
       text: '',
       categories: [],
       selectedCategories: [],
+      //upcoming
       upcomingEvents: [],
       backupUpcomingEvents: [],
+      //past
       pastEvents: [],
       backupPastEvents: [],
+      //details
+      selectedEvent: [],
     }
   },
 
@@ -33,10 +37,14 @@ const app = createApp({
             this.events = dataApi.events
             this.backupEvents = this.events
             this.categoriesList(this.events)
+            //upcoming
             this.upcomingList(this.events)
             this.backupUpcomingEvents = this.upcomingEvents
+            //past
             this.pastList(this.events)
             this.backupPastEvents = this.pastEvents
+            //details
+            this.selectEvent(this.events)
 
         })
         .catch(error => console.log(error.message))
@@ -49,7 +57,7 @@ const app = createApp({
         }
       })
     },
-
+    //upcoming
     upcomingList(array){
       let currentDate = new Date()
       array.forEach(element =>{
@@ -59,7 +67,7 @@ const app = createApp({
         }
       })
     },
-
+    //past
     pastList(array){
       let currentDate = new Date()
       array.forEach(element =>{
@@ -68,6 +76,14 @@ const app = createApp({
           this.pastEvents.push(element)
         }
       })
+    },
+    //details
+    selectEvent(array) {
+      let queryString = location.search;
+      let params = new URLSearchParams(queryString);
+      let eventoId = params.get('id');
+      let event = array.find(evento => evento._id == eventoId);
+      this.selectedEvent = event
     }
 
   },

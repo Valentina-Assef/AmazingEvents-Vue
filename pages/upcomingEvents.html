@@ -91,7 +91,7 @@
           </div>
           <div class="footer-card d-flex">
             <P>Precio ${{evento.price}}</P>
-            <a href="../htmls/details.html?id=${evento._id}" class="btn btn-see-more">See more...</a>
+            <a v-if="evento._id" :href="'../pages/details.html?id=' + evento._id" class="btn btn-see-more">See more...</a>
           </div> 
         </div>
       </div>
